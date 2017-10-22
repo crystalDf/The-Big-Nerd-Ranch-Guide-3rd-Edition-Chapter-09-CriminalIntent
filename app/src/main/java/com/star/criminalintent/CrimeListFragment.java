@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,8 +51,8 @@ public class CrimeListFragment extends Fragment {
         protected Crime mCrime;
 
         protected TextView mTitleTextView;
-        protected CheckBox mSolvedCheckBox;
         protected TextView mDateTextView;
+        protected ImageView mSolvedImageView;
 
         public CrimeHolder(LayoutInflater inflater, ViewGroup container, @LayoutRes int resource) {
             super(inflater.inflate(resource, container, false));
@@ -61,15 +61,15 @@ public class CrimeListFragment extends Fragment {
                     mCrime.getTitle() + " clicked!", Toast.LENGTH_LONG).show());
 
             mTitleTextView = itemView.findViewById(R.id.list_item_crime_title_text_view);
-            mSolvedCheckBox = itemView.findViewById(R.id.list_item_crime_solved_check_box);
             mDateTextView = itemView.findViewById(R.id.list_item_crime_date_text_view);
+            mSolvedImageView = itemView.findViewById(R.id.list_item_crime_solved_image_view);
         }
 
         public void bindCrime(Crime crime) {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
-            mSolvedCheckBox.setChecked(mCrime.isSolved());
             mDateTextView.setText(mCrime.getFormattedDate());
+            mSolvedImageView.setVisibility(mCrime.isSolved() ? View.VISIBLE : View.GONE);
         }
     }
 
