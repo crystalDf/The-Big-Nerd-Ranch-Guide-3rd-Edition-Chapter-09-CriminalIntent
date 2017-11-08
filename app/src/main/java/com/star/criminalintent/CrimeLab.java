@@ -33,6 +33,7 @@ public class CrimeLab {
                 }
             }
         }
+
         return sCrimeLab;
     }
 
@@ -46,6 +47,7 @@ public class CrimeLab {
                 return  crime;
             }
         }
+
         return null;
     }
 }
